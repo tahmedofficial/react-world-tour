@@ -7,6 +7,7 @@ const Countries = () => {
 
     const [countries, setCountries] = useState([]);
     const [visitedCountries, setVisitedCountries] = useState([])
+    const [visitedFlags, setVisitedFlags] = useState([])
 
     useEffect(() => {
         const url = 'https://restcountries.com/v3.1/all'
@@ -18,9 +19,16 @@ const Countries = () => {
 
     const handleVisitedCountries = (country) => {
         console.log(country);
-        const newVisitedCountries = [...visitedCountries, country]
+        const newVisitedCountries = [...visitedCountries, country];
         setVisitedCountries(newVisitedCountries);
     }
+
+    const handleVisitedFlags = (flag) => {
+        const newVisitedFlags = [...visitedFlags, flag];
+        setVisitedFlags(newVisitedFlags);
+    }
+
+    // remove
 
     return (
         <div>
@@ -33,11 +41,17 @@ const Countries = () => {
                     }
                 </ul>
             </div>
+            <div className="flag_container">
+                {
+                    visitedFlags.map((flag, index) => <img key={index} src={flag}></img>)
+                }
+            </div>
             <div className="country_container">
                 {
                     countries.map(country => <Country
                         key={country.cca3}
                         handleVisitedCountries={handleVisitedCountries}
+                        handleVisitedFlags={handleVisitedFlags}
                         country={country}></Country>)
                 }
             </div>

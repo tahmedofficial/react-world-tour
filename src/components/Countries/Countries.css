@@ -4,6 +4,7 @@
     gap: 10px;
 }
 
-/* .visietd{
-    background-color: bisque;
-} */
+.flag_container img{
+    width: 150px;
+    height: 90px;
+}
